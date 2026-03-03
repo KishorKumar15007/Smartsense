@@ -50,7 +50,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 #define SDA_PIN  21
 #define SCL_PIN  22
-#define MQ7_PIN  19
+#define MQ7_PIN  32
 #define PMS_RX   4
 #define PMS_TX   5
 

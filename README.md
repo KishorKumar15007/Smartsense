@@ -127,7 +127,7 @@ This enables scalable frontend analytics without overloading Firebase.
 - GND → GND  
 
 ### MQ-7
-- AO → GPIO 19  
+- AO → GPIO 32 
 - VCC → 5V  
 - GND → GND  
 
@@ -318,7 +318,7 @@ firebase deploy
 
 ### Arduino Firmware
 
-Open firmware/ArduinoCode.ino in Arduino IDE.
+Open firmware/ArduinoCode/ArduinoCode.ino in Arduino IDE.
 
 ---
 
