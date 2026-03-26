@@ -7,7 +7,7 @@
 
 ## 📌 Overview
 
-SmartSense is a production-grade IoT-based Indoor Air Quality (IAQ) monitoring system built on the ESP32 platform with real-time cloud integration.
+SmartSense is an end-to-end IoT-based Indoor Air Quality (IAQ) monitoring system built on the ESP32 platform with real-time cloud integration.
 It measures particulate matter (PM1.0, PM2.5, PM10), temperature, pressure, and Carbon Monoxide levels in real-time.
 
 The system:
@@ -68,8 +68,11 @@ Web Dashboard (Analytics + Alerts)
 - PM1.0 / PM2.5 / PM10 readings (PMS5003)
 - Temperature & Pressure (BMP280)
 - Carbon Monoxide status (MQ-7)
-- Live device heartbeat system
+- Device status inferred from timestamp updates
 - Epoch timestamp logging
+
+Note: MQ-7 readings are threshold-based and not calibrated to ppm values. 
+They are used for relative CO detection (SAFE / ELEVATED / HIGH).
 
 ### 📊 Multi-Layer Data Architecture
 Data is structured into 4 layers:
@@ -98,6 +101,15 @@ This enables scalable frontend analytics without overloading Firebase.
 - Live data visualization
 - Status indicators
 - Cloud-powered web dashboard
+
+---
+
+## ⚠️ Limitations
+
+- MQ-7 is not ppm-calibrated (threshold-based detection)
+- AQI based only on PM2.5 and PM10
+- Single-node monitoring (no spatial coverage)
+- Sensor readings may vary based on placement and airflow
 
 ---
 
@@ -136,6 +148,9 @@ This enables scalable frontend analytics without overloading Firebase.
 ## 📈 AQI Calculation Logic
 
 AQI is calculated using Indian breakpoint interpolation logic.
+
+Note: AQI is calculated using PM2.5 and PM10 only. 
+Other pollutants are not included in this implementation.
 
 The final AQI value is:
 AQI = max(AQI_PM2.5, AQI_PM10)
